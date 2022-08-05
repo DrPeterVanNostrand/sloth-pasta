@@ -1,3 +1,7 @@
+mod bindings;
+
+pub use bindings::*;
+
 macro_rules! vdf_impl {
     (
         $VDF:ident,

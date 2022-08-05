@@ -12,12 +12,12 @@ void sqr_n_mul_mont_pasta(vec256 ret, const vec256 a, size_t n,
 static const vec256 zero = { 0 };
 
 /* 0x40000000000000000000000000000000224698fc094cf91b992d30ed00000001 */
-static const vec256 Pallas_P = {
+const vec256 Pallas_P = {
     TO_LIMB_T(0x992d30ed00000001), TO_LIMB_T(0x224698fc094cf91b),
     TO_LIMB_T(0x0000000000000000), TO_LIMB_T(0x4000000000000000)
 };
-static const limb_t Pallas_p0 = 0x992d30ecffffffff;
-static const vec256 Pallas_RR = {
+const limb_t Pallas_p0 = 0x992d30ecffffffff;
+const vec256 Pallas_RR = {
     TO_LIMB_T(0x8c78ecb30000000f), TO_LIMB_T(0xd7d30dbd8b0de0e7),
     TO_LIMB_T(0x7797a99bc3c95d18), TO_LIMB_T(0x096d41af7b9cb714)
 };
@@ -26,19 +26,19 @@ static const vec256 Pallas_one = {
     TO_LIMB_T(0xffffffffffffffff), TO_LIMB_T(0x3fffffffffffffff)
 };
 
-static inline void to_pallas(vec256 ret, const vec256 a)
+void to_pallas(vec256 ret, const vec256 a)
 {   mul_mont_pasta(ret, Pallas_RR, a, Pallas_P, Pallas_p0);   }
 
-static inline void add_pallas(vec256 ret, const vec256 a, const vec256 b)
+void add_pallas(vec256 ret, const vec256 a, const vec256 b)
 {   add_mod_pasta(ret, a, b, Pallas_P);   }
 
-static inline void sub_pallas(vec256 ret, const vec256 a, const vec256 b)
+void sub_pallas(vec256 ret, const vec256 a, const vec256 b)
 {   sub_mod_pasta(ret, a, b, Pallas_P);   }
 
-static inline void mul_pallas(vec256 ret, const vec256 a, const vec256 b)
+void mul_pallas(vec256 ret, const vec256 a, const vec256 b)
 {   mul_mont_pasta(ret, a, b, Pallas_P, Pallas_p0);   }
 
-static inline void sqr_pallas(vec256 ret, const vec256 a)
+void sqr_pallas(vec256 ret, const vec256 a)
 {   sqr_mont_pasta(ret, a, Pallas_P, Pallas_p0);   }
 
 static inline void sqr_n_mul_pallas(vec256 ret, const vec256 a, size_t n,
@@ -49,12 +49,12 @@ static inline void from_pallas(vec256 ret, const vec256 a)
 {   from_mont_pasta(ret, a, Pallas_P, Pallas_p0);   }
 
 /* 0x40000000000000000000000000000000224698fc0994a8dd8c46eb2100000001 */
-static const vec256 Vesta_P = {
+const vec256 Vesta_P = {
     TO_LIMB_T(0x8c46eb2100000001), TO_LIMB_T(0x224698fc0994a8dd),
     TO_LIMB_T(0x0000000000000000), TO_LIMB_T(0x4000000000000000)
 };
-static const limb_t Vesta_p0 = 0x8c46eb20ffffffff;
-static const vec256 Vesta_RR = {
+const limb_t Vesta_p0 = 0x8c46eb20ffffffff;
+const vec256 Vesta_RR = {
     TO_LIMB_T(0xfc9678ff0000000f), TO_LIMB_T(0x67bb433d891a16e3),
     TO_LIMB_T(0x7fae231004ccf590), TO_LIMB_T(0x096d41af7ccfdaa9)
 };
@@ -63,19 +63,19 @@ static const vec256 Vesta_one = {
     TO_LIMB_T(0xffffffffffffffff), TO_LIMB_T(0x3fffffffffffffff)
 };
 
-static inline void to_vesta(vec256 ret, const vec256 a)
+void to_vesta(vec256 ret, const vec256 a)
 {   mul_mont_pasta(ret, Vesta_RR, a, Vesta_P, Vesta_p0);   }
 
-static inline void add_vesta(vec256 ret, const vec256 a, const vec256 b)
+void add_vesta(vec256 ret, const vec256 a, const vec256 b)
 {   add_mod_pasta(ret, a, b, Vesta_P);   }
 
-static inline void sub_vesta(vec256 ret, const vec256 a, const vec256 b)
+void sub_vesta(vec256 ret, const vec256 a, const vec256 b)
 {   sub_mod_pasta(ret, a, b, Vesta_P);   }
 
-static inline void mul_vesta(vec256 ret, const vec256 a, const vec256 b)
+void mul_vesta(vec256 ret, const vec256 a, const vec256 b)
 {   mul_mont_pasta(ret, a, b, Vesta_P, Vesta_p0);   }
 
-static inline void sqr_vesta(vec256 ret, const vec256 a)
+void sqr_vesta(vec256 ret, const vec256 a)
 {   sqr_mont_pasta(ret, a, Vesta_P, Vesta_p0);   }
 
 static inline void sqr_n_mul_vesta(vec256 ret, const vec256 a, size_t n,
