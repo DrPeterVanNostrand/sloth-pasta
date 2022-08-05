@@ -86,24 +86,28 @@ impl Fp {
         ret
     }
 
+    #[inline(always)]
     pub fn add(&self, other: &Self) -> Self {
         let mut ret = Self::zero();
         unsafe { add_pallas(&mut ret.0, &self.0, &other.0); }
         ret
     }
 
+    #[inline(always)]
     pub fn sub(&self, other: &Self) -> Self {
         let mut ret = Self::zero();
         unsafe { sub_pallas(&mut ret.0, &self.0, &other.0); }
         ret
     }
 
+    #[inline(always)]
     pub fn mul(&self, other: &Self) -> Self {
         let mut ret = Self::zero();
         unsafe { mul_pallas(&mut ret.0, &self.0, &other.0); }
         ret
     }
 
+    #[inline(always)]
     pub fn square(&self) -> Self {
         let mut ret = Self::zero();
         unsafe { sqr_pallas(&mut ret.0, &self.0); }
